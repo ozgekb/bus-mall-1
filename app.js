@@ -91,11 +91,19 @@ function vote(event) {
       productList[i].votes++;
       voteCounter++;
       renderThree();
-    } else {
+    } else if (voteCounter === 25){
       oneClick.removeEventListener('click', vote, true);
       twoClick.removeEventListener('click', vote, true);
       threeClick.removeEventListener('click', vote, true);
-      
+      var result = document.getElementById('result');
+      var theList = document.createElement('ul');
+      result.appendChild(theList);
+      for (var z = 0; z < productList.length; z++) {
+        var list = document.createElement('li');
+        list.innerText = productList[z].votes + ' votes for the ' + productList[z].name + '.';
+        theList.appendChild(list);
+        debugger;
+      }
     }
   }
-}
+};
