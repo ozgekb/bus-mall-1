@@ -87,10 +87,15 @@ threeClick.addEventListener('click', vote);
 function vote(event) {
   event.preventDefault();
   for (var i = 0; i < productList.length; i++) {
-    if (productList[i].id === String(event.target.id)) {
+    if (productList[i].id === String(event.target.id) && voteCounter < 25) {
       productList[i].votes++;
+      voteCounter++;
+      renderThree();
+    } else {
+      oneClick.removeEventListener('click', vote, true);
+      twoClick.removeEventListener('click', vote, true);
+      threeClick.removeEventListener('click', vote, true);
+      
     }
-    voteCounter++;
   }
-  renderThree();
 }
