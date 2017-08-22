@@ -43,6 +43,7 @@ function renderThree () {
   }
   firstImg.src = productList[randomOne].path;
   imgOne.appendChild(firstImg);
+  firstImg.className = 'click';
   var imgTwo = document.getElementById('two');
   var secondImg = document.createElement('img');
   var randomTwo = Math.floor(Math.random() * productList.length);
@@ -51,6 +52,7 @@ function renderThree () {
   }
   secondImg.src = productList[randomTwo].path;
   imgTwo.appendChild(secondImg);
+  secondImg.className = 'click';
   var imgThree = document.getElementById('three');
   var thirdImg = document.createElement('img');
   var randomThree = Math.floor(Math.random() * productList.length);
@@ -59,7 +61,20 @@ function renderThree () {
   }
   thirdImg.src = productList[randomThree].path;
   imgThree.appendChild(thirdImg);
+  thirdImg.className = 'click';
   lastThree = [];
   lastThree.push(randomOne, randomTwo, randomThree);
+  productList[randomOne].displayed += 1;
+  productList[randomTwo].displayed += 1;
+  productList[randomThree].displayed += 1;
 };
 renderThree();
+
+// var picClick = document.getElementsByClassName('click');
+// picClick.addEventListener('click', rockTheVote);
+//
+// function rockTheVote(event) {
+//   event.preventDefault();
+//
+//   renderThree();
+// }
