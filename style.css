@@ -18,15 +18,7 @@ p {
   line-height: 150%;
   padding: 2%;
 }
-#one {
-  float: left;
-  width: 33%
-}
-#two {
-  float: left;
-  width: 33%
-}
-#three {
+#one, #two, #three {
   float: left;
   width: 33%
 }
