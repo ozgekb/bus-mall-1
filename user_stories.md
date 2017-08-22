@@ -1,5 +1,6 @@
 # User Stories
 ## Bus Mall Lab
+### Popular product research.
 
 1. As a market researcher, I want to know a user's interest in a particular set of products.
 2. As a market researcher, I would like users to be able to vote 25 times on a selection of 3 products at one time.
@@ -12,4 +13,4 @@
 9. As a user, I would like to see each image displayed the same size and relative to the other two pictures.
 10. As a user, I would like to know how many questions I will answer and what I need to do when each question is displayed.
 11. As a user, I would like to know how I voted and which products I favored.
-12. As a user, I want to know how many questions I have left until the quiz is over. 
+12. As a user, I want to know how many questions I have left until the quiz is over.

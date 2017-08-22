@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(83, 148, 162);
+  color: white;
+  font-family: helvetica;
+  margin-left: 12%;
+  margin-right: 12%;
+}
+header {
+  text-align: center;
+}
+img {
+  width: 75px;
+}
+h1 span {
+  font-size: 100px:
+}
+p {
+  line-height: 150%;
+  padding: 2%;
+}
+#one {
+  float: left;
+  width: 33%
+}
+#two {
+  float: left;
+  width: 33%
+}
+#three {
+  float: left;
+  width: 33%
+}
+.clearfix {
+  clear: both;
+}
+#one img {
+  width: 80%;
+}
+#two img {
+  width: 80%;
+}
+#three img {
+  width: 80%;
+}
+.products {
+  padding-top: 10%;
+  text-align: center;
+}
