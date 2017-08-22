@@ -11,6 +11,7 @@ function Product (name, path, id) {
 
 var productList = [];
 var lastThree = [];
+var voteCounter = 0;
 
 var bag = new Product ('bag', 'img/bag.jpg', 'bag');
 var banana = new Product ('banana', 'img/banana.jpg', 'banana');
@@ -37,6 +38,7 @@ var lastThree = [];
 
 function renderThree () {
   var imgOne = document.getElementById('one');
+  imgOne.innerHTML = ' ';
   var firstImg = document.createElement('img');
   var randomOne = Math.floor(Math.random() * productList.length);
   while (lastThree.includes(randomOne)) {
@@ -44,8 +46,9 @@ function renderThree () {
   }
   firstImg.src = productList[randomOne].path;
   imgOne.appendChild(firstImg);
-  firstImg.id = 'oneclick';
+  firstImg.id = productList[randomOne].id;
   var imgTwo = document.getElementById('two');
+  imgTwo.innerHTML = ' ';
   var secondImg = document.createElement('img');
   var randomTwo = Math.floor(Math.random() * productList.length);
   while (randomOne === randomTwo || lastThree.includes(randomTwo)) {
@@ -53,8 +56,9 @@ function renderThree () {
   }
   secondImg.src = productList[randomTwo].path;
   imgTwo.appendChild(secondImg);
-  secondImg.id = 'twoclick';
+  secondImg.id = productList[randomTwo].id;
   var imgThree = document.getElementById('three');
+  imgThree.innerHTML = ' ';
   var thirdImg = document.createElement('img');
   var randomThree = Math.floor(Math.random() * productList.length);
   while (randomThree === randomTwo || randomThree === randomOne || lastThree.includes(randomThree)) {
@@ -62,7 +66,7 @@ function renderThree () {
   }
   thirdImg.src = productList[randomThree].path;
   imgThree.appendChild(thirdImg);
-  thirdImg.id = 'threeclick';
+  thirdImg.id = productList[randomThree].id;
   lastThree = [];
   lastThree.push(randomOne, randomTwo, randomThree);
   productList[randomOne].displayed += 1;
@@ -71,22 +75,22 @@ function renderThree () {
 };
 renderThree();
 
-var oneClick = document.getElementById('oneclick');
+var oneClick = document.getElementById('one');
 oneClick.addEventListener('click', vote);
 
-var twoClick = document.getElementById('twoclick');
+var twoClick = document.getElementById('two');
 twoClick.addEventListener('click', vote);
 
-var threeClick = document.getElementById('threeclick');
+var threeClick = document.getElementById('three');
 threeClick.addEventListener('click', vote);
 
-function voteOne(event) {
+function vote(event) {
   event.preventDefault();
-  productList()
+  for (var i = 0; i < productList.length; i++) {
+    if (productList[i].id === String(event.target.id)) {
+      productList[i].votes++;
+    }
+    voteCounter++;
+  }
   renderThree();
-}
-
-function vote (event) {
-    event.preventDefault();
-    console.log(event);
 }
