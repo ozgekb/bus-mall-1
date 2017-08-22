@@ -11,7 +11,6 @@ function Product (name, path, id) {
 
 var productList = [];
 var lastThree = [];
-var voteCounter = 0;
 
 var bag = new Product ('bag', 'img/bag.jpg', 'bag');
 var banana = new Product ('banana', 'img/banana.jpg', 'banana');
@@ -84,10 +83,12 @@ twoClick.addEventListener('click', vote);
 var threeClick = document.getElementById('three');
 threeClick.addEventListener('click', vote);
 
+var voteCounter = 0;
+
 function vote(event) {
   event.preventDefault();
   for (var i = 0; i < productList.length; i++) {
-    if (productList[i].id === String(event.target.id) && voteCounter < 25) {
+    if (productList[i].id === event.target.id && voteCounter < 25) {
       productList[i].votes++;
       voteCounter++;
       renderThree();
@@ -102,8 +103,8 @@ function vote(event) {
         var list = document.createElement('li');
         list.innerText = productList[z].votes + ' votes for the ' + productList[z].name + '.';
         theList.appendChild(list);
-        debugger;
       }
+      break;
     }
   }
 };
