@@ -9,8 +9,11 @@ function Product (name, path, id) {
   this.id = id;
   this.displayed = 0;
   productList.push(this);
+  //JSON.stringify(localStorage.setItem())
 };
+if (localStorage.getItem('products')){
 
+}
 var productList = [];
 
 var bag = new Product ('bag', 'img/bag.jpg', 'bag');
@@ -118,15 +121,59 @@ function vote(event) {
 var nameArr = [];
 var votesArr = [];
 var displayArr = [];
+var nameData = JSON.parse(localStorage.getItem('names'));
+var votesData = JSON.parse(localStorage.getItem('votes'));
+var displayedData = JSON.parse(localStorage.getItem('displayed'));
 
 function data() {
   for (var i = 0; i < productList.length; i++){
     nameArr.push(productList[i].name);
     votesArr.push(productList[i].votes);
     displayArr.push(productList[i].displayed);
+  }  if (localStorage.getItem('votes')){
+      for (var i = 0; i < productList.length; i++) {
+      votesData[i] = votesData[i] + votesArr[i];
+      displayedData[i] = displayedData[i] + displayArr[i];
+    }
+  } else {
+    //votesData = votesArr;
+  //  displayedData = displayArr;
+    localStorage.setItem('names',JSON.stringify(nameArr));
+    localStorage.setItem('votes',JSON.stringify(votesArr));
+    localStorage.setItem('displayed',JSON.stringify(displayArr));
   }
+
+  var chartStuff = {
+    type: 'bar',
+    data: {
+      labels: JSON.parse(localStorage.getItem('names')),
+      datasets: [{
+        label: '# of votes',
+        data: JSON.parse(localStorage.getItem('votes')),
+        backgroundColor: '#f8f8f8',
+        borderWidth: 0
+      },{
+        label: '# times displayed',
+        data: JSON.parse(localStorage.getItem('displayed')),
+        backgroundColor: '#ccccff',
+        borderWidth: 0
+      }]
+    },
+    options: {
+      legend: {
+        display: true,
+        text: 'Results',
+        labels: {
+          fontColor: '#f8f8f8',
+          fontSize: 14,
+        }
+      }
+    }
+  };
   var barChart = new Chart(ctx, chartStuff);
 };
+
+
 
 // var votesArr = [];
 // function votes() {
@@ -136,31 +183,3 @@ function data() {
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
-
-var chartStuff = {
-  type: 'bar',
-  data: {
-    labels: nameArr,
-    datasets: [{
-      label: '# of votes',
-      data: votesArr,
-      backgroundColor: '#f8f8f8',
-      borderWidth: 0
-    },{
-      label: '# times displayed',
-      data: displayArr,
-      backgroundColor: '#ccccff',
-      borderWidth: 0
-    }]
-  },
-  options: {
-    legend: {
-      display: true,
-      text: 'Results',
-      labels: {
-        fontColor: '#f8f8f8',
-        fontSize: 14,
-      }
-    }
-  }
-};
