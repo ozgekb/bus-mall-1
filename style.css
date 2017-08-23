@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(83, 148, 162);
+  background-color: rgb(114, 180, 194);
   color: white;
   font-family: helvetica;
   margin-left: 12%;
@@ -40,4 +40,7 @@ p {
 }
 ul {
   list-style: none;
+}
+canvas {
+  width: 80%;
 }

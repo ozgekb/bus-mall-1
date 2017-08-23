@@ -7,3 +7,7 @@ Bus mall is an application that allows a user to share their preference for a va
 
 Need catalog of products you want on the page.
 There's a construction for the image objects that appear on the page. The constructor requires a product name, id, counter for number of votes and number of times displayed.
+
+## Thanks
+
+Shout out to Shayne, Gabe, Matt, Marco, and David for staying way too late to attempt this project.
