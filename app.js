@@ -34,6 +34,7 @@ var usb = new Product ('usb', 'img/usb.gif', 'usb');
 var waterCan = new Product ('water-can', 'img/water-can.jpg', 'waterCan');
 var wineGlass = new Product ('wine-glass', 'img/wine-glass.jpg', 'wineGlass');
 
+var countDown = 25;
 var lastThree = [];
 
 function randNum() {
@@ -41,6 +42,8 @@ function randNum() {
 };
 
 function renderThree () {
+  var votesLeft = document.getElementById('count-down');
+  votesLeft.innerText = 'You have ' + countDown + ' choices left.';
   var imgOne = document.getElementById('one');
   var randomOne = randNum();
 
@@ -107,6 +110,8 @@ function vote(event) {
       break;
     }
   }
+  countDown--;
+  // counter();
   renderThree();
 };
 
